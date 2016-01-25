@@ -3,8 +3,8 @@ function Place(country,city) {
   this.city = city;
   this.details = [];
 }
-Place.prototype.countyCity = function() {
-  return this.county + " " + this.city;
+Place.prototype.countryCity = function() {
+  return this.country + " " + this.city;
 }
 
 function Details(hotel, landmark, season) {
@@ -50,6 +50,14 @@ $(document).ready(function() {
     var inputtedCity = $("input#new-city").val();
     var newPlace = new Place(inputtedCountry, inputtedCity);
 
+    $(".new-detail").each(function() {
+     var inputtedHotel = $(this).find("input.new-hotel").val();
+     var inputtedLandmark = $(this).find("input.new-landmark").val();
+     var inputtedSeason = $(this).find("input.new-season").val();
+     var newDetails = new Details(inputtedHotel, inputtedLandmark, inputtedSeason)
+     newPlace.details.push(newDetails)
+   });
+
   //   $(".new-address").each(function() {
   //    var inputtedStreet = $(this).find("input.new-street").val();
   //    var inputtedCity = $(this).find("input.new-city").val();
@@ -60,23 +68,26 @@ $(document).ready(function() {
 
 
 
-    $("ul#contacts").append("<li><span class='contact'>" + newContact.fullName() + "</span></li>");
+    $("ul#places").append("<li><span class='Place'>" + newPlace.countryCity() + "</span></li>");
 
     $("input#new-country").val("");
     $("input#new-city").val("");
 
-    $(".contact").last().click(function() {
-      $("#show-contact").show();
-      $("#show-contact h2").text(newContact.fullName());
-      $(".first-name").text(newContact.firstName);
-      $(".last-name").text(newContact.lastName);
-      $("ul#addresses").text("");
-      newContact.addresses.forEach(function(address) {
-        $("ul#addresses").append("<li>" + address.fullAddress() + "</li>");
+    $(".Place").last().click(function() {
+      $("#show-place").show();
+      $("#places h2").text(newPlace.countryCity());
+      $(".Country").text(newPlace.country);
+      $(".City").text(newPlace.city);
+      $("ul#detail").text("");
+      newPlace.details.forEach(function(detail) {
+        $("ul#detail").append("<li>" + detail.fullDetails() + "</li>");
       });
+      // newContact.addresses.forEach(function(address) {
+      //   $("ul#addresses").append("<li>" + address.fullAddress() + "</li>");
+      // });
     });
 
-    resetFields();
+    // resetFields();
 
   });
 });

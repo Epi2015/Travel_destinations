@@ -1,0 +1,11 @@
+#show-place {
+  display: none;
+}
+.Place {
+  cursor: pointer;
+  color: #0088cc;
+}
+
+.Place :hover {
+  text-decoration: underline;
+}
