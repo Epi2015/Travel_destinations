@@ -5,18 +5,13 @@ describe('Place', function() {
     expect(testPlace.city).to.equal("Paris");
     expect(testPlace.details).to.eql([]);
   });
-
-  it("adds the fullName method to all contacts", function() {
-    var testContact = new Contact("Sherlock","Holmes");
-    expect(testContact.fullName()).to.equal("Sherlock Holmes");
-  });
-
-  describe('Address', function() {
-  it("creates a new address with the given specifications", function() {
-    var testAddress = new Address("123 Main St", "Test City","Test State");
-    expect(testAddress.street).to.equal("123 Main St");
-    expect(testAddress.city).to.equal("Test City");
-    expect(testAddress.state).to.equal("Test State");
-  });
 });
-});
+
+  describe('Details', function() {
+    it("creates a new detail with the given properties", function() {
+      var testDetails = new Details("Marriot","Eifel Tower","Winter");
+      expect(testDetails.hotel).to.equal("Marriot");
+      expect(testDetails.landmark).to.equal("Eifel Tower");
+      expect(testDetails.season).to.equal("Winter");
+    });
+  });

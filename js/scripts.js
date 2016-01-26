@@ -3,6 +3,7 @@ function Place(country,city) {
   this.city = city;
   this.details = [];
 }
+
 Place.prototype.countryCity = function() {
   return this.country + " " + this.city;
 }
@@ -54,8 +55,8 @@ $(document).ready(function() {
      var inputtedHotel = $(this).find("input.new-hotel").val();
      var inputtedLandmark = $(this).find("input.new-landmark").val();
      var inputtedSeason = $(this).find("input.new-season").val();
-     var newDetails = new Details(inputtedHotel, inputtedLandmark, inputtedSeason)
-     newPlace.details.push(newDetails)
+     var newDetails = new Details(inputtedHotel, inputtedLandmark, inputtedSeason);
+     newPlace.details.push(newDetails);
    });
 
   //   $(".new-address").each(function() {
@@ -79,12 +80,9 @@ $(document).ready(function() {
       $(".Country").text(newPlace.country);
       $(".City").text(newPlace.city);
       $("ul#detail").text("");
-      newPlace.details.forEach(function(detail) {
-        $("ul#detail").append("<li>" + detail.fullDetails() + "</li>");
+      newPlace.details.forEach(function(x) {
+        $("ul#detail").append("<li>" + x.fullDetails() + "</li>");
       });
-      // newContact.addresses.forEach(function(address) {
-      //   $("ul#addresses").append("<li>" + address.fullAddress() + "</li>");
-      // });
     });
 
     // resetFields();
